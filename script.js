@@ -58,6 +58,11 @@ btnOptions.addEventListener("click", function () {
   }
 });
 
+overlay.addEventListener("click", () => {
+  modalOption.classList.remove("modal--visible");
+  overlay.classList.add("full-hidden");
+});
+
 checkDarkMode.addEventListener("mouseup", function () {
   if (!checkDarkMode.checked) {
     body.classList.add("dark-mode-enabled");
