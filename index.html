@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="reset.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+
+    <script src="script.js" defer></script>
+
+    <link rel="icon" type="image/png" sizes="32x32" , href="images/rubik.png" />
+    <title>Wordle Clone</title>
+  </head>
+
+  <body>
+    <div class="body__wrapper">
+      <header>
+        <img src="images/rubik.png" alt="Rubix cube" class="img header__img"/>
+        <h1>- le Word -</h1>
+        <img src="images/settings.png" alt="Options menu" class="img header__img" id="options"></img>
+      </header>
+
+      <div class="start__game full-hidden">
+        <button class="btn btn__start">Start A New Game</button>
+      </div>
+  
+      <main class="main">
+        <div class="gameboard__container">
+          <div class="gameboard__row game__row--1">
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+          </div>
+          <!-- end game__row--1 -->
+          <div class="gameboard__row game__row--2">
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+          </div>
+          <!-- end game__row--2 -->
+          <div class="gameboard__row game__row--3">
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+          </div>
+          <!-- end game__row--3 -->
+          <div class="gameboard__row game__row--4">
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+          </div>
+          <!-- end game__row--4 -->
+          <div class="gameboard__row game__row--5">
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+          </div>
+          <!-- end game__row--5 -->
+          <div class="gameboard__row game__row--6">
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+            <div class="gameboard__box"></div>
+          </div>
+          <!-- end game__row--6 -->
+        </div>
+        <!-- end gameboard__container -->
+
+        <div class="keyboard__container">
+          <div class="keyboard__row keyboard__row--1">
+            <button class="keyboard__key key--letter">Q</button>
+            <button class="keyboard__key key--letter">W</button>
+            <button class="keyboard__key key--letter">E</button>
+            <button class="keyboard__key key--letter">R</button>
+            <button class="keyboard__key key--letter">T</button>
+            <button class="keyboard__key key--letter">Y</button>
+            <button class="keyboard__key key--letter">U</button>
+            <button class="keyboard__key key--letter">I</button>
+            <button class="keyboard__key key--letter">O</button>
+            <button class="keyboard__key key--letter">P</button>
+          </div>
+          <!-- end row-1 -->
+          <div class="keyboard__row keyboard__row--2">
+            <button class="keyboard__key key--letter">A</button>
+            <button class="keyboard__key key--letter">S</button>
+            <button class="keyboard__key key--letter">D</button>
+            <button class="keyboard__key key--letter">F</button>
+            <button class="keyboard__key key--letter">G</button>
+            <button class="keyboard__key key--letter">H</button>
+            <button class="keyboard__key key--letter">J</button>
+            <button class="keyboard__key key--letter">K</button>
+            <button class="keyboard__key key--letter">L</button>
+          </div>
+          <!-- end row-2 -->
+          <div class="keyboard__row keyboard__row--3">
+            <button class="keyboard__key key--action" id="btn__enter">ENTER</button>
+            <button class="keyboard__key letter">Z</button>
+            <button class="keyboard__key letter">X</button>
+            <button class="keyboard__key letter">C</button>
+            <button class="keyboard__key letter">V</button>
+            <button class="keyboard__key letter">B</button>
+            <button class="keyboard__key letter">N</button>
+            <button class="keyboard__key letter">M</button>
+            <button class="keyboard__key key--action" id="btn__del">BACK</button>
+          </div>
+          <!-- end row-3 -->
+        </div>
+        <!-- end keyboard__container -->
+      </main>
+  
+      <div class="modal modal__gameover"></div>
+      <!-- end modal__gameover -->
+
+      <div class="modal modal__option">
+        <input type="checkbox" id="dark-mode" name="dark-mode" value="dark">
+        <label for="dark-mode" class="checkbox__label">Enable Dark Mode</label>
+      </div>
+      <!-- end modal__options -->
+  
+    </div>
+    <!-- end body__wrapper -->
+
+    <div class="overlay full-hidden"></div>
+
+    <footer class="footer">
+      <p class="footer__p">This Wordle&copy; clone was created, styled, and made functional by Jesse Putnam</p>
+    </footerc>
+  </body>
+</html>
