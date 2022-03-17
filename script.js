@@ -94,9 +94,70 @@ keyboardKeys.forEach((key) =>
       return;
     }
 
-    // Enter ------
-    if (e.target.textContent === "ENTER") return;
+    // If player hits enter too early, prompt to guess more
+    if (e.target.textContent === "ENTER" && playerGuess.length < 5) {
+      const checkRow = document.querySelector(`.game__row--${activeRow}`);
+      checkRow.classList.add("shake");
+      setTimeout(() => checkRow.classList.remove("shake"), 1000);
+      return;
+    }
 
+    // Enter w/ proper length checks against answer
+    if (e.target.textContent === "ENTER") {
+      for (let [i, letter] of playerSubmission.entries()) {
+        // Correct letter, correct place
+        if (letter === answer[i]) {
+          document
+            .querySelector(`.game__row--${activeRow} > .box${i}`)
+            .classList.add("correct-guess");
+
+          keyboardKeys.forEach((key) => {
+            if (key.textContent === letter) {
+              key.classList.remove("partial-guess");
+              key.classList.add("correct-guess");
+            }
+          });
+
+          continue;
+        }
+
+        // Correct letter, wrong place
+        if (answer.includes(letter)) {
+          document
+            .querySelector(`.game__row--${activeRow} > .box${i}`)
+            .classList.add("partial-guess");
+
+          keyboardKeys.forEach((key) => {
+            if (
+              key.textContent === letter &&
+              !key.classList.contains("correct-guess")
+            )
+              key.classList.add("partial-guess");
+          });
+
+          continue;
+        }
+
+        // Wrong letter
+        if (!answer.includes(letter)) {
+          document
+            .querySelector(`.game__row--${activeRow} > .box${i}`)
+            .classList.add("wrong-guess");
+
+          keyboardKeys.forEach((key) => {
+            if (key.textContent === letter) key.classList.add("wrong-guess");
+          });
+
+          continue;
+        }
+      }
+
+      activeRow++;
+      playerGuess = "";
+      return;
+    }
+
+    // Add guess to playerGuess
     if (playerGuess.length < 5) playerGuess += e.target.textContent;
   })
 );

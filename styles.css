@@ -17,7 +17,7 @@ body {
 }
 
 .body__wrapper {
-  width: clamp(320px, 80vw, 800px);
+  width: clamp(350px, 80vw, 800px);
   padding-top: 3vh;
   position: relative;
 }
@@ -87,7 +87,7 @@ header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1vw;
-  transition: all 0.3s;
+  transition: transform 0.3s;
 }
 
 .gameboard__box {
@@ -108,7 +108,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5px 0;
+  padding: 5px;
   border-radius: 2px;
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.452);
   max-width: 580px;
@@ -124,6 +124,8 @@ header {
   cursor: pointer;
   width: clamp(27px, 6.5vw, 50px);
   height: clamp(27px, 6.5vw, 50px);
+  border: solid 1px black;
+  border-radius: 2px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.452);
   transition: all 0.3s;
 }
@@ -213,4 +215,35 @@ input[type="checkbox"] {
 .dark-mode-enabled {
   background-color: rgb(70, 70, 70);
   color: white;
+}
+
+/* Error shake */
+.shake {
+  animation-name: error-shake;
+  animation-duration: 0.3s;
+  animation-iteration-count: 3;
+}
+
+@keyframes error-shake {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.correct-guess {
+  background-color: rgba(18, 165, 18, 0.527);
+}
+
+.partial-guess {
+  background-color: rgba(165, 118, 18, 0.527);
+}
+
+.wrong-guess {
+  background-color: rgba(110, 110, 110, 0.582);
 }
