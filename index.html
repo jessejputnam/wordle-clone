@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 
     <link href="reset.css" rel="stylesheet" />
     <link href="styles.css" rel="stylesheet" />
@@ -22,11 +22,11 @@
         <img src="images/settings.png" alt="Options menu" class="img header__img" id="options"></img>
       </header>
 
-      <div class="start__game full-hidden">
+      <div class="start__game">
         <button class="btn btn__start">Start A New Game</button>
       </div>
   
-      <main class="main">
+      <main class="main hidden">
         <div class="gameboard__container">
           <div class="gameboard__row game__row--0">
             <div class="gameboard__box box0"></div>
@@ -121,7 +121,11 @@
         <!-- end keyboard__container -->
       </main>
   
-      <div class="modal modal__gameover"></div>
+      <div class="modal modal__gameover full-hidden">
+        <h3 class="gameover--message"></h3>
+        <p class="correct-answer--message">The answer was: <span class="gameover--answer"></span></p>
+        <button type="button" class="btn__newgame">New Game</button>
+      </div>
       <!-- end modal__gameover -->
 
       <div class="modal modal__option">
@@ -134,6 +138,7 @@
     <!-- end body__wrapper -->
 
     <div class="overlay full-hidden"></div>
+    <div class="overlay2 full-hidden"></div>
 
     <footer class="footer">
       <p class="footer__p">This Wordle&copy; clone was created, styled, and made functional by Jesse Putnam</p>

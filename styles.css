@@ -186,6 +186,54 @@ input[type="checkbox"] {
   transform: translateY(-1px);
 }
 
+.modal__gameover {
+  height: 30vw;
+  width: 50vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: slategrey;
+  color: white;
+  text-shadow: 3px -3px 10px black;
+  font-size: 6vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 10px 20px 5px 1px rgba(34, 13, 71, 0.5);
+  opacity: 0.97;
+  z-index: 1;
+}
+
+.correct-answer--message {
+  font-size: 0.9rem;
+}
+
+.btn__newgame {
+  border-radius: 8px;
+  border: outset 0.04em rgb(54, 54, 54);
+  background-color: lightgray;
+  font-size: 0.7em;
+  cursor: pointer;
+  margin-bottom: 5px;
+  z-index: 98;
+  margin-top: 5px;
+}
+
+.btn__newgame:active {
+  border: inset 0.04em rgb(54, 54, 54);
+  transform: scale(0.99);
+  box-shadow: 0 0 3px 2px rgba(75, 75, 75, 0.473);
+  background-color: rgb(226, 226, 226);
+}
+
+.gameover--answer {
+  color: rgba(230, 166, 166, 0.897);
+  text-shadow: 0 0 3px black;
+}
+
 /* GAMEPLAY STATES */
 .hidden {
   opacity: 0;
@@ -210,6 +258,17 @@ input[type="checkbox"] {
   top: 0;
   right: 0;
   backdrop-filter: blur(3px);
+  z-index: 10;
+}
+
+.overlay2 {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.089);
+  position: absolute;
+  top: 0;
+  right: 0;
+  backdrop-filter: blur(2px);
 }
 
 .dark-mode-enabled {
