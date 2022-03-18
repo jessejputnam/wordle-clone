@@ -1,3 +1,5 @@
+//! NEEDS REFACTORING AND ORGANIZATION
+
 // Answer Choices
 const answers = [
   "COULD",
@@ -27,7 +29,8 @@ const answers = [
   "YEARN",
 ];
 
-// DOM ELEMENTS
+// ----------------------------- DOM ELEMENTS ----------------------------
+
 const body = document.querySelector("body");
 const overlay = document.querySelector(".overlay");
 const overlay2 = document.querySelector(".overlay2");
@@ -51,6 +54,8 @@ const guessBoxes = document.querySelectorAll(".gameboard__box");
 
 const keyboardContainer = document.querySelector(".keyboard__container");
 const keyboardKeys = document.querySelectorAll(".keyboard__key");
+
+// ------------------- VISUAL EFFECTS ----------------------
 
 // Dark Mode Option
 btnOptions.addEventListener("click", function () {
@@ -81,31 +86,30 @@ checkDarkMode.addEventListener("mouseup", function () {
 });
 
 // ------------------------ GAMEPLAY ---------------------------
-// let answer;
-// let playerSubmission;
-// let activeRow = 0;
-// let playerGuess = "";
-
-//! Press button to start game and reveal gameboard
-
 const init = () => {
+  // Variables
   let answer;
   let playerSubmission;
   let activeRow = 0;
   let playerGuess = "";
-  // Randomly choose a correct answer and assign to answer as array of letters
+
+  // Assign random answer
   answer = answers[Math.floor(Math.random() * answers.length)].split("");
   modalGameoverAnswer.textContent = answer.join("");
 
   // User input for letters
   keyboardKeys.forEach((key) =>
     key.addEventListener("mousedown", function (e) {
+      // -------------- BACK FUNCTIONALITY ----------------
+
       // Back deletes last selection
       if (e.target.textContent === "BACK") {
         // Delete by creating white space to fill empty guessBoxes
         playerGuess = playerGuess.slice(0, -1).padEnd(5, " ");
         return;
       }
+
+      // -------------- ENTER FUNCTIONALITY ---------------
 
       // If player hits enter too early, prompt to guess more
       if (e.target.textContent === "ENTER" && playerGuess.length < 5) {
@@ -185,12 +189,16 @@ const init = () => {
         return;
       }
 
+      // ---------------- USER INPUT FUNCTIONALITY -----------------------
+
       // Add guess to playerGuess
       if (playerGuess.length < 5) playerGuess += e.target.textContent;
     })
   );
 
-  // User clicked key logged as  in order
+  // ----------------------- VARIABLE UPDATES ------------------------
+
+  // User clicked key logged in order
   document.addEventListener("mouseup", function () {
     // Convert playerGuess to array to be printed to boxes
     playerSubmission = [...playerGuess];
@@ -205,6 +213,8 @@ const init = () => {
     // Remove trim to allow player to add to guess
     playerGuess = playerGuess.trim();
   });
+
+  // --------------------- START NEW GAME FUNCTIONALITY ------------------------
 
   // User starts a new game
   btnNewgame.addEventListener("click", function () {
@@ -231,25 +241,9 @@ const init = () => {
   });
 };
 
+// ------------------- USER START GAME FUNCTIONALITY --------------------
 btnStart.addEventListener("click", function () {
   btnStart.classList.add("full-hidden");
   mainBoard.classList.remove("hidden");
   init();
 });
-
-// User plays word
-
-// Check each letter of playerAnswer against answer
-// if letter is in word but wrong place -> box turns orange
-// same letter on keyboard -> orange
-
-// if letter in is word and right place -> box turns green
-// same letter on keyboard -> green
-
-// if letter is not in word -> box turns dark gray
-// same letter on keyboard -> dark gray
-
-// if row < 5 then row++
-// Win condition
-// if all letters are correct in correct spot gameover modal appears with message
-// if not all correct by row 5, gameover modal appears with message
