@@ -1,38 +1,125 @@
 //! NEEDS REFACTORING AND ORGANIZATION
 
 // Answer Choices
+
 const answers = [
-  "COULD",
-  "THEIR",
-  "FIELD",
-  "WOULD",
-  "OTHER",
-  "THOSE",
-  "TRADE",
-  "GOING",
-  "YOUNG",
-  "TOTAL",
-  "NORSE",
-  "ODORS",
+  "ABUSE",
+  "ADIEU",
   "ADORE",
+  "ADULT",
   "AGILE",
   "ALOHA",
+  "AMBER",
   "AMITY",
+  "AUGHT",
+  "AZURE",
+  "BASIS",
+  "BLOCK",
+  "BLUNT",
+  "BRAIN",
+  "BRUNT",
+  "CABLE",
+  "CHAIN",
+  "CHAIR",
+  "CIVIL",
+  "COACH",
+  "COULD",
+  "CROWN",
+  "DOUBT",
+  "DOZEN",
+  "DRAFT",
+  "DRAMA",
+  "DRAWN",
+  "EAGER",
+  "EARTH",
+  "ENEMY",
+  "EQUAL",
   "EXTRA",
-  "NOBLE",
+  "FAULT",
+  "FIELD",
+  "FIFTH",
+  "FLUID",
+  "FORTH",
+  "GIANT",
+  "GNOME",
+  "GOING",
+  "GRAND",
+  "GUEST",
+  "HAPPY",
+  "HEAVY",
+  "HOTEL",
+  "HUMAN",
+  "IMAGE",
+  "INDEX",
+  "ISSUE",
+  "JOINT",
+  "JUDGE",
+  "KINDS",
+  "KNOWN",
+  "KNOWS",
+  "LOGIC",
+  "LOWER",
+  "LUCKY",
+  "LYING",
   "MAGIC",
+  "MATCH",
+  "MEDIA",
   "MERIT",
+  "MIXED",
+  "NIGHT",
+  "NOBLE",
+  "NORSE",
+  "NORTH",
+  "NOVEL",
+  "NURSE",
+  "ODORS",
+  "OTHER",
+  "PAILS",
+  "PALED",
+  "PALES",
+  "PANEL",
+  "PANIC",
   "PIOUS",
+  "PRIZE",
+  "QUICK",
   "QUIET",
+  "QUITE",
+  "RADIO",
+  "ROBIN",
+  "ROYAL",
+  "RUGBY",
+  "SCOPE",
+  "SCORE",
+  "SHOWN",
+  "SOUND",
+  "STAGE",
+  "THEIR",
+  "THEME",
+  "THOSE",
+  "TOTAL",
+  "TRADE",
   "UNITY",
-  "ZESTY",
+  "URBAN",
+  "USAGE",
+  "VAPID",
+  "VENOM",
+  "VOICE",
+  "WASTE",
+  "WOULD",
+  "WRITE",
+  "YACHT",
   "YEARN",
+  "YIELD",
+  "YOUNG",
+  "ZESTY",
+  "ZONED",
 ];
 
-// ----------------------------- DOM ELEMENTS ----------------------------
+// -------------------------- DOM ELEMENTS -------------------------
 
 const body = document.querySelector("body");
 const overlay = document.querySelector(".overlay");
+("");
 const overlay2 = document.querySelector(".overlay2");
 
 const btnOptions = document.querySelector("#options");
@@ -69,10 +156,8 @@ btnOptions.addEventListener("click", function () {
 });
 
 overlay.addEventListener("click", () => {
-  if (modalGameover.classList.contains("full-hidden")) {
-    modalOption.classList.remove("modal--visible");
-    overlay.classList.add("full-hidden");
-  }
+  modalOption.classList.remove("modal--visible");
+  overlay.classList.add("full-hidden");
 });
 
 checkDarkMode.addEventListener("mouseup", function () {
@@ -88,6 +173,7 @@ checkDarkMode.addEventListener("mouseup", function () {
 // ------------------------ GAMEPLAY ---------------------------
 const init = () => {
   // Variables
+  let prevAnswer;
   let answer;
   let playerSubmission;
   let activeRow = 0;
@@ -218,9 +304,18 @@ const init = () => {
 
   // User starts a new game
   btnNewgame.addEventListener("click", function () {
+    prevAnswer = answer.join("");
     playerGuess = "";
     activeRow = 0;
     answer = answers[Math.floor(Math.random() * answers.length)].split("");
+
+    // Prevent previous answer being selectable
+    while (answer.join("") === prevAnswer) {
+      answer = answers[Math.floor(Math.random() * answers.length)].split("");
+    }
+
+    console.log(`Last answer: ${prevAnswer}, new answer:${answer.join("")}`);
+
     modalGameoverAnswer.textContent = answer.join("");
 
     modalGameover.classList.add("full-hidden");
@@ -241,7 +336,7 @@ const init = () => {
   });
 };
 
-// ------------------- USER START GAME FUNCTIONALITY --------------------
+// ---------------- USER START GAME FUNCTIONALITY ------------------
 btnStart.addEventListener("click", function () {
   btnStart.classList.add("full-hidden");
   mainBoard.classList.remove("hidden");

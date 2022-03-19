@@ -220,6 +220,7 @@ input[type="checkbox"] {
 .btn__newgame {
   border-radius: 5px;
   border: outset 0.04em rgb(54, 54, 54);
+  color: black;
   background-color: lightgray;
   font-size: 0.7em;
   cursor: pointer;
@@ -275,6 +276,7 @@ input[type="checkbox"] {
   top: 0;
   right: 0;
   backdrop-filter: blur(2px);
+  z-index: 0;
 }
 
 .dark-mode-enabled {
