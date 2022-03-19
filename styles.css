@@ -8,6 +8,12 @@ h1 {
   transition: all 0.5s;
 }
 
+/* ############### iOS FIX ATTEMPT ############## */
+.btn {
+  padding: 0;
+  color: inherit;
+}
+
 /* FORMATTING */
 body {
   display: flex;
@@ -212,7 +218,7 @@ input[type="checkbox"] {
 }
 
 .btn__newgame {
-  border-radius: 8px;
+  border-radius: 5px;
   border: outset 0.04em rgb(54, 54, 54);
   background-color: lightgray;
   font-size: 0.7em;
