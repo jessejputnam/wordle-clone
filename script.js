@@ -1,7 +1,4 @@
-//! NEEDS REFACTORING AND ORGANIZATION
-
 // Answer Choices
-
 const answers = [
   "ABUSE",
   "ADIEU",
@@ -142,32 +139,56 @@ const guessBoxes = document.querySelectorAll(".gameboard__box");
 const keyboardContainer = document.querySelector(".keyboard__container");
 const keyboardKeys = document.querySelectorAll(".keyboard__key");
 
-// ------------------- VISUAL EFFECTS ----------------------
+// ----------------------- DRY FUCTIONS ---------------------
+// Element Visibility
+const revealOptions = () => {
+  modalOption.classList.add("modal--visible");
+  overlay.classList.remove("full-hidden");
+};
 
+const hideOptions = () => {
+  modalOption.classList.remove("modal--visible");
+  overlay.classList.add("full-hidden");
+};
+
+// Dark Mode
+const enableDark = () => {
+  body.classList.add("dark-mode-enabled");
+  keyboardKeys.forEach((key) => key.classList.add("dark-mode-enabled"));
+};
+
+const disableDark = () => {
+  body.classList.remove("dark-mode-enabled");
+  keyboardKeys.forEach((key) => key.classList.remove("dark-mode-enabled"));
+};
+
+// Gameover Modal
+const revealGameover = () => {
+  modalGameover.classList.remove("full-hidden");
+  overlay2.classList.remove("full-hidden");
+};
+
+const hideGameover = () => {
+  modalGameover.classList.add("full-hidden");
+  overlay2.classList.add("full-hidden");
+};
+
+// ------------------- VISUAL EFFECTS ----------------------
 // Dark Mode Option
 btnOptions.addEventListener("click", function () {
-  if (!modalOption.classList.contains("modal--visible")) {
-    modalOption.classList.add("modal--visible");
-    overlay.classList.remove("full-hidden");
-  } else {
-    modalOption.classList.remove("modal--visible");
-    overlay.classList.add("full-hidden");
+  if (!modalOption.classList.contains("modal--visible")) revealOptions();
+  else {
+    hideOptions();
   }
 });
 
 overlay.addEventListener("click", () => {
-  modalOption.classList.remove("modal--visible");
-  overlay.classList.add("full-hidden");
+  hideOptions();
 });
 
 checkDarkMode.addEventListener("mouseup", function () {
-  if (!checkDarkMode.checked) {
-    body.classList.add("dark-mode-enabled");
-    keyboardKeys.forEach((key) => key.classList.add("dark-mode-enabled"));
-  } else {
-    body.classList.remove("dark-mode-enabled");
-    keyboardKeys.forEach((key) => key.classList.remove("dark-mode-enabled"));
-  }
+  if (!checkDarkMode.checked) enableDark();
+  else disableDark();
 });
 
 // ------------------------ GAMEPLAY ---------------------------
@@ -210,15 +231,13 @@ const init = () => {
         // Lose condition
         if (activeRow === 5 && playerGuess !== answer.join("")) {
           modalGameoverMessage.textContent = "Sorry, chump!";
-          modalGameover.classList.remove("full-hidden");
-          overlay2.classList.remove("full-hidden");
+          revealGameover();
         }
 
         // Win condition
         if (playerGuess === answer.join("")) {
           modalGameoverMessage.textContent = "You win!";
-          modalGameover.classList.remove("full-hidden");
-          overlay2.classList.remove("full-hidden");
+          revealGameover();
         }
 
         for (let [i, letter] of playerSubmission.entries()) {
@@ -300,7 +319,7 @@ const init = () => {
     playerGuess = playerGuess.trim();
   });
 
-  // --------------------- START NEW GAME FUNCTIONALITY ------------------------
+  // --------------- START NEW GAME FUNCTIONALITY -----------------
 
   // User starts a new game
   btnNewgame.addEventListener("click", function () {
@@ -314,13 +333,11 @@ const init = () => {
       answer = answers[Math.floor(Math.random() * answers.length)].split("");
     }
 
-    console.log(`Last answer: ${prevAnswer}, new answer:${answer.join("")}`);
-
     modalGameoverAnswer.textContent = answer.join("");
 
-    modalGameover.classList.add("full-hidden");
-    overlay2.classList.add("full-hidden");
+    hideGameover();
 
+    // Reset color changes
     guessBoxes.forEach((box) => {
       box.textContent = "";
       box.classList.remove("partial-guess");
