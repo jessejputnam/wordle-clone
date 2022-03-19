@@ -205,7 +205,7 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button;
+  -webkit-appearance: none;
 }
 /*
  30. Remove the inner border and padding in Firefox.
