@@ -11,7 +11,6 @@ A responsive clone of the popular guessing game, Wordle. A random 5-letter word 
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
 
 ## Overview
 
@@ -19,23 +18,13 @@ A responsive clone of the popular guessing game, Wordle. A random 5-letter word 
 
 Users should be able to:
 
-- Navigate between landing page and all product pages
-- Open and view shopping cart
-- Add items to shopping cart
-- Increment and decrement items in shopping cart
-- Delete items in shopping cart
-- Calculate shopping cart total
-
-Programming process should include:
-
-- Using functional React
-- Focusing on unidirectional data flow (passing information between states and props)
-- Using React Router for page navigation
-
-Firebase branch addendums
-
-- Host site from Firebase
-- Include authentication services from Firebase -- email login.
+- Start a new game with a fresh board and keyboard
+- Make guesses of words that ust be 5-letters long
+- See which guesses were correctly placed, correctly chosen but incorrectly placed, or incorrectly chosen on the gameboard
+- See which letters have already been guessed, guessed correctly, and guessed incorrect placement based on color on their virtual keyboard
+- See the correct answer on game's end
+- Restart the game on win/lose
+- Switch between dark and light mode
 
 ### Screenshot
 
@@ -52,14 +41,15 @@ Firebase branch addendums
 - Flexbox
 - Mobile-first workflow
 - JavaScript
-- React.js
-- [Jest](https://jestjs.io/) - Testing framework
-- [Webpack](https://webpack.js.org/) - Module Bundler
+- HTML
 
 ### What I learned
 
-This project started getting me more familiar with the flow and control of data between components. It really solidified that concept that child components listen for events, then pass that event up to the parent with state before the parent changes the state and sends the new data-set down to the child to be rendered.
-
-### Continued development
-
-- ~~I encountered an issue at the very end, while trying to deploy to github. The React Router switching behaves very differently on my local live server than on the hosted server. I could not find a solution that satisfied both scenarios equally. I need to do more research to discover (a) what the issue actually is that is causing the effect of different behavior and (b) what solutions may already exist for it.~~ I misunderstood how useNavigate behaved with regards to relative path when starting the string with "/"
+This project gave me some good insight into crestive problem solving. For example, I had an issue when trying to represent the player pressing ```backspace``` and how to ensure there was still a proper amount of white space. My solution was to use padEnd to fill the array with necessary whitespace:
+```javascript
+if (e.target.textContent === "BACK") {
+        // Delete by creating white space to fill empty guessBoxes
+        playerGuess = playerGuess.slice(0, -1).padEnd(5, " ");
+        return;
+      }
+ ```
