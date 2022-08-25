@@ -39,7 +39,7 @@ Firebase branch addendums
 
 ### Screenshot
 
-![](./public/screen-shot.jpg)
+![](./images/wordle.png)
 
 ### Links
 
