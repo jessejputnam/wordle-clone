@@ -1,3 +1,65 @@
-# wordle-clone
+# le Word
 
-live: https://jessejputnam.github.io/wordle-clone/
+A responsive clone of the popular guessing game, Wordle. A random 5-letter word is secretly chosen, and it is your job as the player to guess what that word is. For each guess, the game will check if the letters used are correct, correct but misplaced, or not in the word at all.
+
+## Table of contents
+
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+
+## Overview
+
+### The challenge
+
+Users should be able to:
+
+- Navigate between landing page and all product pages
+- Open and view shopping cart
+- Add items to shopping cart
+- Increment and decrement items in shopping cart
+- Delete items in shopping cart
+- Calculate shopping cart total
+
+Programming process should include:
+
+- Using functional React
+- Focusing on unidirectional data flow (passing information between states and props)
+- Using React Router for page navigation
+
+Firebase branch addendums
+
+- Host site from Firebase
+- Include authentication services from Firebase -- email login.
+
+### Screenshot
+
+![](./public/screen-shot.jpg)
+
+### Links
+
+- Live Site URL: [le Word](https://jessejputnam.github.io/wordle-clone/)
+
+## My process
+
+### Built with
+
+- Flexbox
+- Mobile-first workflow
+- JavaScript
+- React.js
+- [Jest](https://jestjs.io/) - Testing framework
+- [Webpack](https://webpack.js.org/) - Module Bundler
+
+### What I learned
+
+This project started getting me more familiar with the flow and control of data between components. It really solidified that concept that child components listen for events, then pass that event up to the parent with state before the parent changes the state and sends the new data-set down to the child to be rendered.
+
+### Continued development
+
+- ~~I encountered an issue at the very end, while trying to deploy to github. The React Router switching behaves very differently on my local live server than on the hosted server. I could not find a solution that satisfied both scenarios equally. I need to do more research to discover (a) what the issue actually is that is causing the effect of different behavior and (b) what solutions may already exist for it.~~ I misunderstood how useNavigate behaved with regards to relative path when starting the string with "/"
